@@ -1,5 +1,6 @@
 <p>This is the "new" page!</p>
 
+<% if false %>
 <form method="POST" action="/users" accept-charset="UTF-8">
   <label for="username">Username:</label>
   <input id="username" type="text" name="user[username]" value=""><br />
@@ -9,6 +10,16 @@
   <input id="password" type="password" name="user[password]" value=""><br />
   <input type="submit" name="submit" value="submit">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-
 </form>
+<% end %>
+
+<%= form_tag('/users') do %>
+  <%= hidden_field_tag 'authenticity_token',form_authenticity_token %><br />
+  <%= label_tag 'username','Username:' %>
+  <%= text_field_tag 'username' %><br />
+  <%= label_tag 'email','Email:' %>
+  <%= text_field_tag 'email' %><br />
+  <%= label_tag 'password','Password:' %>
+  <%= password_field_tag %><br />
+  <%= submit_tag 'submit' %>
+<% end %>
