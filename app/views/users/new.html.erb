@@ -1,25 +1,11 @@
-<p>This is the "new" page!</p>
-
-<% if false %>
-<form method="POST" action="/users" accept-charset="UTF-8">
-  <label for="username">Username:</label>
-  <input id="username" type="text" name="user[username]" value=""><br />
-  <label for="email">Email:</label>
-  <input id="email" type="text" name="user[email]" value=""><br />
-  <label for="password">Password:</label>
-  <input id="password" type="password" name="user[password]" value=""><br />
-  <input type="submit" name="submit" value="submit">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-</form>
-<% end %>
-
-<%= form_tag('/users') do %>
-  <%= hidden_field_tag 'authenticity_token',form_authenticity_token %><br />
-  <%= label_tag 'username','Username:' %>
-  <%= text_field_tag 'username' %><br />
-  <%= label_tag 'email','Email:' %>
-  <%= text_field_tag 'email' %><br />
-  <%= label_tag 'password','Password:' %>
-  <%= password_field_tag %><br />
-  <%= submit_tag 'submit' %>
+<%= render "errors"%>
+<p> Add a user: </p>
+<%= form_for(@user,width:"800") do |f| %>
+<%=label :username,"User name:" %>
+<%=f.text_field :username,label: 'Username:' %><br />
+<%=label :email,"Email:" %>
+<%=f.text_field :email,label: 'Email:',value: 'sample@example.com' %><br />
+<%=label :password,"Password:" %>
+<%=f.password_field :password,label: 'Password:' %><br />
+<%=f.submit %>
 <% end %>

@@ -1,0 +1,11 @@
+<%= render "errors" %>
+<p><%= "Edit user '#{@user.username}':" %></p>
+<%= form_for(@user,width:"800") do |f| %>
+<%=label :username,"User name:" %>
+<%=f.text_field :username%><br />
+<%=label :email,"Email:" %>
+<%=f.text_field :email,value: @user.email || 'sample@example.com' %><br />
+<%=label :password,"Password:" %>
+<%=f.password_field :password%><br />
+<%=f.submit %>
+<% end %>
